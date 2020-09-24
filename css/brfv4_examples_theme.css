@@ -1,9 +1,8 @@
 
 
 html, body 		{ position: absolute; width:  100%; height:  100%; background-color: rgba(44,44,44,0.95); margin: 0; padding: 0; font-family: Arial, sans-serif; font-size: 16px; color: #005f9c; overflow: auto; }
-canvas 			{ position: absolute; background-color: transparent; margin-left: 350px; padding: 0; }
-video 			{ position: absolute; background-color: transparent; display: none;  margin-left: 350px; padding: 0; }
-
+canvas 			{ position: absolute; background-color: transparent; margin-left: 350px; padding: 0;     box-shadow: 1px 1px 3px 2px skyblue;}
+video 			{ position: absolute; background-color: transparent; display: none;  margin-left: 350px; padding: 0;   }
 #_wrapper	 	{ position: absolute; width:  100%; height:  100%; }
 #_content 		{ position: absolute; width: 100%; height: 100%;  margin: auto; top: 0; left: 0; right: 0; }
 #_progressBar	{ position: absolute; width:   1px; height: 480px;  margin: auto; top: 0; left: 0; }
@@ -16,10 +15,16 @@ video 			{ position: absolute; background-color: transparent; display: none;  ma
 #_settingsRight { position: absolute; width: 255px; height:  100%; background-color: transparent; right: 0; }
 #_msg           { position: absolute; width: 100%;  height:  40px; background-color: transparent; bottom: 0; }
 
+
 .modal-content{
   border: 0px solid black;
+  background-color : transparent;
 }
 
+img{
+  height : 25vh;
+  width : 200px;
+}
 #title{
   color : #FBC91B;
   font-family: "Times New Roman", Times, serif;
@@ -63,6 +68,26 @@ video 			{ position: absolute; background-color: transparent; display: none;  ma
 
 }
 
+.progress{
+    text-align: center;
+    z-index: 1;
+    float: right;
+    color: #FBC91B;
+    text-shadow: 2px 1px black;
+    width: 640px;
+    align-self: center;
+    margin-right: 26px;
+    align-content: center;
+    height: 5vh;
+    background-color : transparent;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+    margin-left: 240px;
+    line-height: 37px;
+}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -79,15 +104,30 @@ video 			{ position: absolute; background-color: transparent; display: none;  ma
 }
 
 /* The Close Button */
+
 .close {
-  display : none
+    float: right;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    text-shadow: 1px 3px 1px skyblue;
+    opacity: 2.5;
+    margin-left : auto;
+    margin-right: 300px;
+    margin-top: -39px;
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
-  text-decoration: none;
   cursor: pointer;
+  float: right;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    text-shadow: 1px 3px 1px skyblue;
+    opacity: 2.5
 }
 
 .tryonBtn{

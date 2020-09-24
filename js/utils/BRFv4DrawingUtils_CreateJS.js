@@ -59,7 +59,7 @@
 
 		// Once BRF and Camera are ready we need to setup an onEnterFrame event.
 		// The Ticker helps to get 30 FPS.
-
+    console.log(updateCallback)
 		if(drawing.onUpdateCallback != null) {
 			drawing.stage.removeEventListener("tick", drawing.onUpdateCallback);
 			drawing.onUpdateCallback = null;

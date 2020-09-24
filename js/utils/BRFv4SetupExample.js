@@ -184,7 +184,7 @@
 			// webcam continuous update.
 
 			drawing.setUpdateCallback(updateBRFExample);
-
+      
 		} else {
 
 			// Simply update 10 times for loaded images.
@@ -201,6 +201,7 @@
 
 			for(var i = 0; i < 10; i++) {
 				brfManager.update(data);
+        
 			}
 
 			setTimeout(function() {

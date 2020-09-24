@@ -27,9 +27,13 @@
 <div id="_wrapper" >
 
   <div id="_content">
+    
     <div id="myModal" class="modal">
+      
       <div class="modal-content">
         <span class="close">&times;</span>
+          <label id="progress" class="progress">
+          </label>
           <video  id="_webcam"></video>
           <canvas id="_imageData"></canvas>
           <canvas id="_faceSub"></canvas>
@@ -52,7 +56,7 @@
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="assets/image1.png" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Blue Sun Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="1" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -62,7 +66,7 @@
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="assets/image2.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Violet Sun Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="2" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -72,7 +76,7 @@
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="assets/image3.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Eye Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="3" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -80,9 +84,9 @@
           </div>
            <div class="col-xs-12 col-lg-3">
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/image4.jpg" alt="Card image cap">
+              <img class="card-img-top" src="assets/image5.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Eye Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="4" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -93,9 +97,9 @@
         <div class="row">
           <div class="col-xs-12 col-lg-3">
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/image5.jpg" alt="Card image cap">
+              <img class="card-img-top" src="assets/image4.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Eye Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="5" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -105,7 +109,7 @@
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="assets/image6.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Eye Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="6" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -115,7 +119,7 @@
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="assets/image7.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Eye Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="7" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -125,7 +129,7 @@
             <div class="card" style="width: 18rem;">
               <img class="card-img-top" src="assets/image8.jpg" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Yellow Sun Glass</h5>
+                <h5 class="card-title">Sky Sun Glass</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet, no vix postea gloriatur, natum dolorem cum an.</p>
                 <button id="8" onclick="loadThreeJS(this.id)" class="btn btn-primary tryonBtn">Tryon Loading...</button>
               </div>
@@ -153,8 +157,7 @@
         disableTryon();
       }
       if(loadWebcam == "loaded"){
-          enableTryon();
-          clearInterval(setInter);
+          enableTryon();;
 
       }
   }, 3600);
@@ -167,6 +170,7 @@
         }
   }
   function enableTryon(){
+      clearInterval(setInter)
       console.log(tryonBtn[0].text)
       for(let i = 0 ; i < tryonBtn.length ; i++)
         {
@@ -198,9 +202,31 @@ window.onclick = function(event) {
 		brfv4Example.reinit();
 	}
   function loadThreeJS(id){
+     var progress = document.getElementById("progress");
+
+      progress.innerHTML = 'Please wait. Image is loading...  <i id="totalFile"></i> of <i id="loaded"></i>'
+
+    sessionStorage.getItem('Imagestatus') == "Loading"
     sessionStorage.setItem("imagenumber", id)
     modal.style.display = "block";
 		brfv4Example.loader.loadExample(["js/examples/face_tracking/ThreeJS_example.js"], onExampleLoaded);
+      var loaded = document.getElementById("loaded");
+      var totalFile = document.getElementById("totalFile");
+      var setProgress = setInterval(function () {
+    console.log(sessionStorage.getItem('Filesloaded'))
+    if(sessionStorage.getItem('Totalfiles') !== null && sessionStorage.getItem('Filesloaded') !== null)
+    {
+      totalFile.innerHTML = sessionStorage.getItem('Totalfiles')+"";
+      loaded.innerHTML = sessionStorage.getItem('Filesloaded')+"";
+    }
+    if(sessionStorage.getItem('Imagestatus') == "Loaded")
+      {
+        clearInterval(setProgress);
+        progress.innerHTML = "";
+      }
+  }, 60);
   }
+  
+  
 
 </script>

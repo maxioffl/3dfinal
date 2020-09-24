@@ -151,8 +151,39 @@
     t3d.updateLayout(dom.stageWidth, dom.stageHeight);
 
     var containers = t3d.baseNodes;
-    var loader = new THREE.ObjectLoader();
+    
+    var manager = new THREE.LoadingManager();
+    
+    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
 
+      console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+
+    };
+
+    manager.onLoad = function ( ) {
+
+      console.log( 'Loading complete!');
+      sessionStorage.setItem("Imagestatus","Loaded")
+
+    };
+
+
+    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+      sessionStorage.setItem("Totalfiles",itemsTotal)
+      console.log( 'Loaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+      
+      sessionStorage.setItem("Filesloaded",itemsLoaded)
+
+    };
+
+    manager.onError = function ( url ) {
+
+      console.log( 'There was an error loading ' + url );
+
+    };
+    
+    var loader = new THREE.ObjectLoader(manager);
+      
     loader.load(url, (function(model) {
       // t3d.model = model;
 
@@ -162,7 +193,7 @@
         mesh.renderOrder = 2;
         containers[k].add(mesh);
       }
-
+      console.log("done")
       t3d.render();
 
     }));
